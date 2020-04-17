@@ -133,16 +133,7 @@ const ArchivePage = ({ location, data }) => {
             <tbody>
               {projects.length > 0 &&
                 projects.map(({ node }, i) => {
-                  const {
-                    date,
-                    github,
-                    external,
-                    ios,
-                    android,
-                    title,
-                    tech,
-                    company,
-                  } = node.frontmatter;
+                  const { date, github, external, title, tech, company } = node.frontmatter;
                   return (
                     <tr key={i} ref={el => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
@@ -184,7 +175,7 @@ const ArchivePage = ({ location, data }) => {
                               <FormattedIcon name="GitHub" />
                             </a>
                           )}
-                          {ios && (
+                          {/* {ios && (
                             <a
                               href={ios}
                               target="_blank"
@@ -192,8 +183,8 @@ const ArchivePage = ({ location, data }) => {
                               aria-label="Apple App Store Link">
                               <FormattedIcon name="AppStore" />
                             </a>
-                          )}
-                          {android && (
+                          )} */}
+                          {/* {android && (
                             <a
                               href={android}
                               target="_blank"
@@ -201,7 +192,7 @@ const ArchivePage = ({ location, data }) => {
                               aria-label="Google Play Store Link">
                               <FormattedIcon name="PlayStore" />
                             </a>
-                          )}
+                          )} */}
                         </span>
                       </td>
                     </tr>
@@ -235,8 +226,6 @@ export const pageQuery = graphql`
             tech
             github
             external
-            ios
-            android
             company
           }
           html
