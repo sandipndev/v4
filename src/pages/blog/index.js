@@ -123,19 +123,19 @@ const PensievePage = ({ location, data }) => {
   return (
     <Layout location={location}>
       <Helmet>
-        <title>Pensieve | Brittany Chiang</title>
-        <link rel="canonical" href="https://brittanychiang.com/pensieve" />
+        <title>Blog | Sandipan Dey</title>
+        <link rel="canonical" href="https://sandipan.dev/blog" />
       </Helmet>
 
       <StyledMainContainer>
         <header>
-          <h1 className="big-title">Pensieve</h1>
+          <h1 className="big-title">Sandipan's Blog</h1>
           <p className="subtitle">
             <a
               href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve"
               target="_blank"
               rel="noopener noreferrer">
-              a collection of memories
+              a collection of pensieves
             </a>
           </p>
         </header>
@@ -167,7 +167,7 @@ const PensievePage = ({ location, data }) => {
                         <StyledTags>
                           {tags.map((tag, i) => (
                             <li key={i}>
-                              <Link to={`/pensieve/tags/${kebabCase(tag)}/`}>#{tag}</Link>
+                              <Link to={`/blog/tags/${kebabCase(tag)}/`}>#{tag}</Link>
                             </li>
                           ))}
                         </StyledTags>
