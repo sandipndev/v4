@@ -1,3 +1,5 @@
+![](https://github.com/triethyl/v4/workflows/CI/CD%20over%20FTP/badge.svg)
+
 <div align="center">
   <img alt="Logo" src="https://raw.githubusercontent.com/bchiang7/v4/master/src/images/logo.png" width="100" />
 </div>
