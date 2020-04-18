@@ -42,7 +42,7 @@ const PostTemplate = ({ data, location }) => {
   return (
     <Layout location={location}>
       <Helmet>
-        <title>{title} | Pensieve | Brittany Chiang</title>
+        <title>{title} | Pensieve | Sandipan Dey</title>
       </Helmet>
       <StyledPostContainer>
         <span className="breadcrumb">
