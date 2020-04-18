@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
@@ -35,9 +35,44 @@ const StyledPostContent = styled.div`
   }
 `;
 
+const DisqusComp = ({ fullUrl, id }) => {
+  useEffect(() => {
+    const DISQUS_SCRIPT = 'disq_script';
+    const sd = document.getElementById(DISQUS_SCRIPT);
+    let disqus_config;
+
+    if (!sd) {
+      disqus_config = function() {
+        this.page.url = fullUrl;
+        this.page.identifier = id;
+      };
+
+      const d = document;
+      const s = d.createElement('script');
+      s.src = 'https://sandipan-blog.disqus.com/embed.js';
+      s.id = DISQUS_SCRIPT;
+      s.async = true;
+      s.setAttribute('data-timestamp', +new Date());
+
+      d.body.appendChild(s);
+    } else {
+      window.DISQUS.reset({
+        reload: true,
+        config: disqus_config,
+      });
+    }
+  }, []);
+  return <div id="disqus_thread"></div>;
+};
+
+DisqusComp.propTypes = {
+  fullUrl: PropTypes.string,
+  id: PropTypes.string,
+};
+
 const PostTemplate = ({ data, location }) => {
   const { frontmatter, html } = data.markdownRemark;
-  const { title, date, tags } = frontmatter;
+  const { title, date, tags, slug } = frontmatter;
 
   return (
     <Layout location={location}>
@@ -72,6 +107,7 @@ const PostTemplate = ({ data, location }) => {
         </StyledPostHeader>
 
         <StyledPostContent dangerouslySetInnerHTML={{ __html: html }} />
+        <DisqusComp fullUrl={`https://sandipan.dev/blog/${slug}`} id={`${slug}`} />
       </StyledPostContainer>
     </Layout>
   );
